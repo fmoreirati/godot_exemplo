@@ -2,24 +2,12 @@
 
 [ext_resource path="res://assets/plataforma03.png" type="Texture" id=1]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 32, 32 )
 
-[sub_resource type="ConvexPolygonShape2D" id=2]
+[sub_resource type="ConvexPolygonShape2D" id=3]
 
 [node name="Node2D" type="Node2D"]
-
-[node name="plataform" type="Sprite" parent="."]
-texture = ExtResource( 1 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 128, 0, 32, 32 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="plataform"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plataform/StaticBody2D"]
-position = Vector2( 16, 16 )
-shape = SubResource( 1 )
 
 [node name="plataform2" type="Sprite" parent="."]
 editor/display_folded = true
@@ -32,7 +20,7 @@ region_rect = Rect2( 224, 0, 32, 32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="plataform2/StaticBody2D"]
 position = Vector2( 16, 16 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="plataform3" type="Sprite" parent="."]
 editor/display_folded = true
@@ -45,7 +33,7 @@ region_rect = Rect2( 64, 0, 32, 32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="plataform3/StaticBody2D"]
 position = Vector2( 16, 16 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="plataform4" type="Sprite" parent="."]
 editor/display_folded = true
@@ -58,7 +46,7 @@ region_rect = Rect2( 288, 0, 32, 32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="plataform4/StaticBody2D"]
 position = Vector2( 16, 16 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="plataform5" type="Sprite" parent="."]
 editor/display_folded = true
@@ -71,7 +59,7 @@ region_rect = Rect2( 288, 32, 32, 32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="plataform5/StaticBody2D"]
 position = Vector2( 16, 16 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="plataform6" type="Sprite" parent="."]
 editor/display_folded = true
@@ -84,7 +72,7 @@ region_rect = Rect2( 256, 32, 32, 32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="plataform6/StaticBody2D"]
 position = Vector2( 16, 16 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="plataform7" type="Sprite" parent="."]
 editor/display_folded = true
@@ -97,7 +85,7 @@ region_rect = Rect2( 96, 96, 32, 32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="plataform7/StaticBody2D"]
 position = Vector2( 16, 16 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="treeFisica" type="Sprite" parent="."]
 editor/display_folded = true
@@ -112,7 +100,7 @@ region_rect = Rect2( 96, 448, 64, 64 )
 position = Vector2( 32, 32 )
 rotation = 3.14159
 scale = Vector2( 4, 4 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 one_way_collision_margin = 0.0
 
 [node name="tree" type="Sprite" parent="."]
@@ -180,4 +168,16 @@ texture = ExtResource( 1 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 64, 384, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 16, 16 )
+shape = SubResource( 2 )
+
+[node name="plataform" type="Sprite" parent="StaticBody2D"]
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 128, 0, 32, 32 )
 
