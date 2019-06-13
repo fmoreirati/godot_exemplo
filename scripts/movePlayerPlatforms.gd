@@ -2,16 +2,17 @@ extends KinematicBody2D
 
 const UP = Vector2(0, -1)
 
+export (int) var speed = 150
+export (int) var gravity = 1000
+export (int) var jump_height = -400
+
 var motion = Vector2()
-var gravity = 1500
-var speed = 150
-var jump_height = -550
 
 func _ready():
 	pass
 
-func _process(delta):
-	pass
+#func _process(delta):
+#	pass
 
 func _physics_process(delta):
 	
@@ -31,9 +32,8 @@ func _physics_process(delta):
 
 		
 	if is_on_floor():
-		if Input.is_action_pressed("ui_up"):
+		if Input.is_action_pressed("ui_accept"):
 			motion.y = jump_height
-			$jump.play()
 			
 	motion = move_and_slide(motion,UP)
 
