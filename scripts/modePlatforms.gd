@@ -9,7 +9,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(posinical , " - " , global_position.x)
+	#print(posinical , " - " , global_position.x)
 	if lado == 0:
 		position.x -= 1
 		if global_position.x == posinical-100:

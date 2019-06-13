@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+var inicio = Vector2(200,300)
+
 const UP = Vector2(0, -1)
 
 export (int) var speed = 150
@@ -34,6 +36,11 @@ func _physics_process(delta):
 	if is_on_floor():
 		if Input.is_action_pressed("ui_accept"):
 			motion.y = jump_height
+	
+	if global_position.y > 1450:
+		#queue_free() #mata o personagem
+		global_position = inicio
+		
 			
 	motion = move_and_slide(motion,UP)
 
