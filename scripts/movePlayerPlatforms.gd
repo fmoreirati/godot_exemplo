@@ -38,9 +38,22 @@ func _physics_process(delta):
 			motion.y = jump_height
 	
 	if global_position.y > 1450:
-		#queue_free() #mata o personagem
-		global_position = inicio
-		
-			
+		dano()
+
 	motion = move_and_slide(motion,UP)
 
+
+func dano():
+	game.life -= 1 
+	print("vidas: ", game.life)
+	if (game.life < 0):
+		queue_free()
+	else:
+		global_position = inicio
+	
+
+
+func _on_Area2D_body_entered(body):
+	print(body.get_name())
+	if body.get_name() == "StaticBody2D":
+		body.queue_free()
