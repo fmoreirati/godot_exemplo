@@ -6,7 +6,7 @@ const UP = Vector2(0, -1)
 
 export (int) var speed = 150
 export (int) var gravity = 1000
-export (int) var jump_height = -400
+export (int) var jump_height = 200
 
 var motion = Vector2()
 
@@ -35,11 +35,11 @@ func _physics_process(delta):
 		
 	if is_on_floor():
 		if Input.is_action_pressed("ui_accept"):
-			motion.y = jump_height
+			motion.y = -jump_height
 	
 	if global_position.y > 1450:
 		dano()
-
+	
 	motion = move_and_slide(motion,UP)
 
 
@@ -49,11 +49,4 @@ func dano():
 	if (game.life < 0):
 		queue_free()
 	else:
-		global_position = inicio
-	
-
-
-func _on_Area2D_body_entered(body):
-	print(body.get_name())
-	if body.get_name() == "StaticBody2D":
-		body.queue_free()
+		move_local_x(+10)
