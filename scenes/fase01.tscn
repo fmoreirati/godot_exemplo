@@ -5,10 +5,10 @@
 [ext_resource path="res://tiles/basePlatforms.tres" type="TileSet" id=3]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/obstaculo.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/platforms.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/plataforms.tscn" type="PackedScene" id=6]
+
 
 [node name="Node2D" type="Node2D"]
-position = Vector2( -160, -32 )
 __meta__ = {
 "_edit_horizontal_guides_": [ -111.994, 1396.53 ],
 "_edit_vertical_guides_": [ 144.0, -291.484 ]
@@ -41,7 +41,6 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="TileMap" type="TileMap" parent="."]
-position = Vector2( -1, 0 )
 tile_set = ExtResource( 3 )
 cell_size = Vector2( 32, 32 )
 format = 1
@@ -56,10 +55,8 @@ position = Vector2( 512, 416 )
 [node name="Obstaculo2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 768, 416 )
 
-[node name="Platforms" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1216, 1120 )
-z_index = -1
+[node name="Plataforms" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1472, 1168 )
 
-[node name="Platforms2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1504, 1184 )
-z_index = -1
+[node name="Plataforms2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1184, 1056 )

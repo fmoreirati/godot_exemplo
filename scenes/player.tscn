@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://scripts/movePlayerPlatforms.gd" type="Script" id=1]
+[ext_resource path="res://scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/atores.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -78,10 +78,11 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 5.81243, 2.1673 )
 
-[node name="KinematicBody2D" type="KinematicBody2D"]
+[node name="KinematicBody2D" type="KinematicBody2D" groups=[
+"player",
+]]
 collision/safe_margin = 0.01
 script = ExtResource( 1 )
-jump_height = -400
 
 [node name="atores" type="Sprite" parent="."]
 scale = Vector2( 0.5, 0.5 )
@@ -115,11 +116,12 @@ drag_margin_top = 0.0
 drag_margin_right = 0.0
 drag_margin_bottom = 0.0
 
-[node name="Area2D" type="Area2D" parent="." groups=[
-"arma",
-]]
+[node name="Area2D" type="Area2D" parent="."]
 position = Vector2( 16, 16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 0.295982, 15.3417 )
+position = Vector2( 0, 15 )
 shape = SubResource( 6 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 35, 20 )
