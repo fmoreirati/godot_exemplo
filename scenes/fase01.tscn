@@ -7,7 +7,6 @@
 [ext_resource path="res://scenes/obstaculo.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/plataforms.tscn" type="PackedScene" id=6]
 
-
 [node name="Node2D" type="Node2D"]
 __meta__ = {
 "_edit_horizontal_guides_": [ -111.994, 1396.53 ],
@@ -59,4 +58,4 @@ position = Vector2( 768, 416 )
 position = Vector2( 1472, 1168 )
 
 [node name="Plataforms2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1184, 1056 )
+position = Vector2( 1248, 1088 )

@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/inicio.gd" type="Script" id=1]
+[ext_resource path="res://assets/titulo.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+outline_size = 1
+outline_color = Color( 1, 1, 1, 0.523973 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "inicio"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("GridContainer/Label:custom_fonts/font:outline_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.9, 2.9, 3.9, 4.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "raio"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="GridContainer" type="GridContainer" parent="Control"]
+margin_left = 225.0
+margin_top = 100.0
+margin_right = 825.0
+margin_bottom = 500.0
+custom_constants/vseparation = 100
+
+[node name="TextureRect" type="TextureRect" parent="Control/GridContainer"]
+margin_right = 600.0
+margin_bottom = 197.0
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="Control/GridContainer"]
+margin_top = 297.0
+margin_right = 600.0
+margin_bottom = 402.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.568627, 0.188235, 0.12549, 1 )
+text = "Pressione uma tecla 
+para iniciar"
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+autoplay = "inicio"
+anims/inicio = SubResource( 2 )
+anims/raio = SubResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 25.52, 15.1422 )
+color = Color( 1, 1, 1, 0 )
+
+[node name="Timer" type="Timer" parent="Control"]
+autostart = true
+[connection signal="timeout" from="Control/Timer" to="." method="_on_Timer_timeout"]

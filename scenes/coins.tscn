@@ -1,0 +1,97 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/coins.png" type="Texture" id=1]
+[ext_resource path="res://scripts/coins.gd" type="Script" id=2]
+[ext_resource path="res://assets/sons/coins01.ogg" type="AudioStream" id=3]
+
+[sub_resource type="AnimatedTexture" id=1]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 12.8062
+
+[sub_resource type="Animation" id=3]
+resource_name = "coin_up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 0 ), Vector2( 5, -30 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 7 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.0509804 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 7 ]
+}
+
+[node name="Coins" type="Node2D"]
+
+[node name="coins" type="Sprite" parent="."]
+position = Vector2( 5, 0 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 1 )
+normal_map = SubResource( 1 )
+centered = false
+hframes = 8
+frame = 2
+script = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="coins" groups=[
+"coins",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="coins/Area2D"]
+position = Vector2( 8, 8 )
+scale = Vector2( 0.5, 0.5 )
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="coins"]
+autoplay = "coins"
+anims/coin_up = SubResource( 3 )
+anims/coins = SubResource( 4 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="coins"]
+position = Vector2( -3.33333, 0 )
+scale = Vector2( 0.666667, 0.666667 )
+stream = ExtResource( 3 )
+[connection signal="body_entered" from="coins/Area2D" to="coins" method="_on_Area2D_body_entered"]

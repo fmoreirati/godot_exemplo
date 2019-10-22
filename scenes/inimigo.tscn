@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/atores.png" type="Texture" id=1]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 22.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "left"
+
+[sub_resource type="AnimatedTexture" id=3]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 32, 32 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody2D"]
+anims/left = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D/AnimationPlayer"]
+texture = ExtResource( 1 )
+normal_map = SubResource( 3 )
+centered = false
+vframes = 4
+hframes = 3
+frame = 3
+region_enabled = true
+region_rect = Rect2( 384, 0, 192, 256 )

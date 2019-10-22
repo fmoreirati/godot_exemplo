@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/golpe02.ogg-4469949923de372051583a4ae5d647f1.oggstr"
+
+[deps]
+
+source_file="res://assets/sons/golpe02.ogg"
+dest_files=[ "res://.import/golpe02.ogg-4469949923de372051583a4ae5d647f1.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
