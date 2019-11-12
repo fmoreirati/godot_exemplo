@@ -6,9 +6,9 @@ func _ready():
 	$Control/Timer.start(t)
 
 func _process(delta):
-	
+
 	pass
-	
+
 func _on_Timer_timeout():
 	$Control/AnimationPlayer.play("raio")
 	yield($Control/Timer, "timeout")
@@ -17,5 +17,6 @@ func _on_Timer_timeout():
 	$Control/Timer.start(t)
 
 func _input(event):
-	if event.is_action_pressed("ui_accept"):
-		get_tree().change_scene("res://scenes/fase01.tscn")
+	print(get_tree().current_scene)
+	if event and not $Control/AnimationPlayer.is_playing():
+		get_tree().change_scene("res://scenes/inicio.tscn")

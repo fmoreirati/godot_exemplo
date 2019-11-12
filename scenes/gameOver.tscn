@@ -1,14 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://scripts/inicio.gd" type="Script" id=1]
-[ext_resource path="res://assets/titulo.png" type="Texture" id=2]
-[ext_resource path="res://assets/fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=3]
+[ext_resource path="res://scripts/gameover.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
-size = 50
+size = 94
 outline_size = 1
-outline_color = Color( 1, 1, 1, 0.833866 )
-font_data = ExtResource( 3 )
+outline_color = Color( 1, 1, 1, 0.259908 )
+font_data = ExtResource( 2 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "inicio"
@@ -25,18 +24,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("GridContainer/TextureRect:rect_position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1, 5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, -300 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -68,21 +55,19 @@ margin_right = 825.0
 margin_bottom = 500.0
 custom_constants/vseparation = 100
 
-[node name="TextureRect" type="TextureRect" parent="Control/GridContainer"]
-margin_right = 600.0
-margin_bottom = 197.0
-texture = ExtResource( 2 )
-
 [node name="Label" type="Label" parent="Control/GridContainer"]
-margin_top = 297.0
+margin_top = 152.0
 margin_right = 600.0
-margin_bottom = 402.0
+margin_bottom = 248.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.568627, 0.188235, 0.12549, 1 )
-text = "Pressione uma tecla 
-para iniciar"
+text = "Game Over"
 align = 1
 valign = 1
+autowrap = true
+uppercase = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
 autoplay = "inicio"

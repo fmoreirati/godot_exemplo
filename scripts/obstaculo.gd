@@ -23,13 +23,13 @@ func _on_cabeca_body_entered(body):
 		queue_free()
 
 
-#O serra para o player
-func _on_Area2D_body_entered(body):
-	if body.get_groups().has("player"):
-		body.dano()
-
-	if body.get_groups().has("tiro"):
-		body.queue_free()
-		$AnimationPlayer.stop()
-		$Area2D/CollisionShape2D.queue_free()
+##O serra para o player
+#func _on_Area2D_body_entered(body):
+#	if body.get_groups().has("player"):
+#		body.dano()
+#
+#	if body.get_groups().has("tiro"):
+#		body.queue_free()
+#		$AnimationPlayer.stop()
+#		$Area2D/CollisionShape2D.queue_free()
 

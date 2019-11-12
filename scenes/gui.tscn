@@ -1,30 +1,101 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/heart.png" type="Texture" id=1]
+[ext_resource path="res://scripts/gui.gd" type="Script" id=1]
+[ext_resource path="res://assets/placar.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/coins.png" type="Texture" id=4]
 
-[sub_resource type="BitmapFont" id=1]
+[sub_resource type="DynamicFont" id=1]
+size = 35
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "coins"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 7 ]
+}
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://assets/fonts/ARCADECLASSIC.TTF"
+
+[sub_resource type="DynamicFont" id=4]
+size = 40
+font_data = SubResource( 3 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 0.00012207
+script = ExtResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0.529412 )
+margin_right = 300.0
+margin_bottom = 200.0
+rect_scale = Vector2( 0.8, 0.6 )
+size_flags_vertical = 0
+texture = ExtResource( 2 )
+stretch_mode = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 10.0
+margin_top = 5.0
+margin_right = 215.688
+margin_bottom = 126.0
+custom_constants/separation = -5
+
+[node name="HBoxContainer_Point" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 205.0
+margin_bottom = 36.0
+
+[node name="Label_Point" type="Label" parent="VBoxContainer/HBoxContainer_Point"]
+margin_right = 57.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 1 )
+text = "xxx"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 59.0
-margin_bottom = 32.0
+margin_top = 31.0
+margin_right = 205.0
+margin_bottom = 72.0
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
-margin_top = 15.0
-margin_bottom = 16.0
-custom_fonts/font = SubResource( 1 )
-text = "Life"
+margin_top = 13.0
+margin_right = 32.0
+margin_bottom = 27.0
+text = "        "
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
-margin_left = 4.0
-margin_right = 36.0
-margin_bottom = 32.0
-texture = ExtResource( 1 )
-stretch_mode = 3
+[node name="Sprite" type="Sprite" parent="VBoxContainer/HBoxContainer/Label"]
+position = Vector2( 0, -5 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 4 )
+centered = false
+hframes = 8
+frame = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/HBoxContainer/Label"]
+autoplay = "coins"
+anims/coins = SubResource( 2 )
+
+[node name="Label_Coin" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_left = 36.0
+margin_right = 58.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 4 )
+text = "0"
+
+[node name="HBoxContainer_Life" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 67.0
+margin_right = 205.0
+margin_bottom = 121.0
+size_flags_vertical = 3

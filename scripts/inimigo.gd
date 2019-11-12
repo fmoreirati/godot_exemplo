@@ -1,4 +1,4 @@
-extends Node
+extends KinematicBody2D
 
 var flip = true
 var posicao_inicial = Vector2()
